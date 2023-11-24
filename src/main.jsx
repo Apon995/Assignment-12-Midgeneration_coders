@@ -9,6 +9,8 @@ import Home from './Components_folder/Home.jsx';
 import Contact_Us from './Components_folder/Contact_Us.jsx';
 import About_us from './Components_folder/About_us.jsx';
 import Dashboard from './Components_folder/Dashboard.jsx';
+import Login from './Components_folder/Login.jsx';
+import Register from './Components_folder/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,16 +27,25 @@ const router = createBrowserRouter([
         element: <Services />
       },
       {
-        path : '/Contact',
-        element : <Contact_Us/>
+        path: '/Contact',
+        element: <Contact_Us />
       },
       {
-        path : '/About',
-        element : <About_us/>
+        path: '/About',
+        element: <About_us />
       },
       {
-        path : '/Dashboard',
-        element : <Dashboard/>
+        path: '/Login',
+        element: <Login />
+
+      },
+      {
+        path: '/Register',
+        element: <Register />
+      },
+      {
+        path: '/Dashboard',
+        element: <Dashboard />
       }
     ]
   }

@@ -13,6 +13,7 @@ import Login from './Components_folder/Login.jsx';
 import Register from './Components_folder/Register.jsx';
 import AuthProvider from './Context_provider/AuthProvider.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Private from './Components_folder/Private.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Dashboard',
-        element: <Dashboard />
+        element: <Private> <Dashboard /></Private>
       }
     ]
   }

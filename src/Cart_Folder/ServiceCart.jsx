@@ -6,7 +6,7 @@ function ServiceCart({ service }) {
         <>
 
             <div id='servicebg'>
-                <h4 className='text-3xl text-[#2a2a2a] font-bold h-[80px]'>{serviceName || 'Custom website'}</h4>
+                <h4 className='text-3xl text-[#2a2a2a] font-bold h-[100px] '>{serviceName || 'Custom website'}</h4>
                 <div className='flex flex-col gap-9'>
                     <div>
                         <span className='text-base text-[#ff695f] line-through font-medium'>{previousPrice || 7999}৳</span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import BannerImg from '../assets/Banner-image.png';
 import shape1 from '../assets/ShapeFolder/shape1.png'
 import shape2 from '../assets/ShapeFolder/shape2.png'
@@ -14,8 +15,12 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 function Banner() {
+
+    const location = useLocation();
+
+
     return (
-        <div className='relative flex items-center pt-10 py-5 '>
+        <div className={`relative ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
 
             <div className='w-[50%] px-[6%]'>
                 <Swiper
@@ -43,11 +48,11 @@ function Banner() {
                             <p className='text-base font-medium text-white w-[500px] '>
                                 Our professionals will give you the best idea and they will help you to reach your goal.
                             </p>
-                              <br />
-                             
+                            <br />
+
                             <div className="flex gap-4  w-fit items-center">
-                               <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
-                             
+                                <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
+
                                 <h2 className='font-normal text-xl'>+88034434090</h2>
                             </div>
                         </div>
@@ -68,11 +73,11 @@ function Banner() {
                             </p>
                             <br />
 
-                         
-                                <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'>Watch videos</button>
 
-                                
-                       
+                            <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'>Watch videos</button>
+
+
+
                         </div>
                     </SwiperSlide>
 
@@ -81,7 +86,7 @@ function Banner() {
                         <div className='text-white '>
                             <h1 className='text-xl pb-5 text-[#ff695f] font-medium'>Idea !</h1>
                             <h2 className='text-7xl font-bold leading-[90px]'>
-                                Get the 
+                                Get the
                                 <span className='text-[#03a4ed]'> best Idea's</span> for your
                                 <span className='text-[#2742fd]'> business or <span className='text-[#ff695f]'>website !</span></span>
                             </h2>
@@ -90,11 +95,11 @@ function Banner() {
                             <p className='text-base font-medium  w-[550px] text-white'>
                                 Our professionals will give you the best idea and they will help you to reach your goal.
                             </p>
-                              <br />
-                             
+                            <br />
+
                             <div className="flex gap-4  w-fit items-center">
-                               <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
-                             
+                                <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
+
                                 <h2 className='font-normal text-xl'> <i className="fa fa-phone "></i> +88034434090</h2>
                             </div>
                         </div>

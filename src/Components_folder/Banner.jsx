@@ -103,7 +103,7 @@ function Banner() {
                 </Swiper>
 
             </div>
-            <div className='w-[50%] '>
+            <div className='w-[50%] px-9 '>
                 <img className='bannerimg' src={BannerImg} alt="" />
 
 

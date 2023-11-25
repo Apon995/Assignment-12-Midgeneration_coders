@@ -45,7 +45,7 @@ function Banner() {
                             </p>
                               <br />
                              
-                            <div class="flex gap-4  w-fit items-center">
+                            <div className="flex gap-4  w-fit items-center">
                                <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
                              
                                 <h2 className='font-normal text-xl'>+88034434090</h2>
@@ -92,7 +92,7 @@ function Banner() {
                             </p>
                               <br />
                              
-                            <div class="flex gap-4  w-fit items-center">
+                            <div className="flex gap-4  w-fit items-center">
                                <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
                              
                                 <h2 className='font-normal text-xl'> <i className="fa fa-phone "></i> +88034434090</h2>

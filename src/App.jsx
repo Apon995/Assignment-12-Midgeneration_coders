@@ -13,7 +13,7 @@ function App() {
   return (
     <>
 
-      <header className={` ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname =='/Dashboard' ? '' : 'headerbg' }`}>
+      <header  className={` ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname =='/Dashboard' ? '' : 'headerbg' }`}>
         <Navbar />
         <Banner />
       </header>

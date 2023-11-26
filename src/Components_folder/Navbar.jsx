@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../CustomHooks_folder/useAuth';
 
+
 function Navbar() {
   const [navbar, setNavbar] = useState(false);
   const { user, Logout } = useAuth();
@@ -21,10 +22,10 @@ function Navbar() {
 
   useEffect(() => {
 
-    if(location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname =='/Dashboard'){
+    if (location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard') {
       return setNavbar(true);
     }
-    else{
+    else {
       window.addEventListener("scroll", handleChangeNav);
 
     }
@@ -34,17 +35,17 @@ function Navbar() {
 
 
 
-  }, [handleChangeNav ,location.pathname])
+  }, [handleChangeNav, location.pathname])
 
 
 
   return (
 
     <>
-      <nav style={{ backgroundColor: navbar ? '#2742fd' : 'inherit', transition: 'background 0.2s', position: navbar ? 'fixed' : 'static', zIndex: 999 }} className={`flex  w-full items-center  justify-between px-[2%] py-4 text-white`}>
+      <nav  style={{ backgroundColor: navbar ? '#2742fd' : 'inherit', transition: 'background 0.2s', position: navbar ? 'fixed' : 'static', zIndex: 999 }} className={`flex  w-full items-center  justify-between px-[2%] py-4 text-white`}>
         <div className='flex items-center gap-12'>
 
-          <div className='flex items-center flex-col uppercase font-extrabold text-xl leading-[24px]'>
+          <div  className='flex items-center flex-col uppercase font-extrabold text-xl leading-[24px]'>
             <h1>Mid Generation</h1>
             <span >Coders</span>
           </div>
@@ -52,10 +53,16 @@ function Navbar() {
 
           <div>
             <ul className='flex items-center gap-4 text-white' id='NavLinks'>
-              <li><NavLink to='/' >Home</NavLink></li>
-              <li><NavLink to='/Service' >Services</NavLink></li>
-              <li><NavLink to='/About' >About us</NavLink></li>
-              <li><NavLink to='/Contact' >Contact us</NavLink></li>
+              <li>
+                <NavLink to={'/'}>Home</NavLink>
+              </li>
+              <li>
+                <NavLink to={'/About'}>About us</NavLink>
+              </li>
+
+              <li>
+               <NavLink to={'/Contact'}>Contact us</NavLink>
+              </li>
               <li><NavLink to='/Dashboard' >Dashboard</NavLink></li>
             </ul>
           </div>

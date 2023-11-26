@@ -14,7 +14,9 @@ import service1 from "../assets/ShapeFolder/service-icon-01.png";
 import service2 from "../assets/ShapeFolder/service-icon-02.png";
 import service3 from "../assets/ShapeFolder/service-icon-03.png";
 
+
 import 'swiper/css/navigation';
+import AxiosError from "./AxiosError.jsx";
 
 
 
@@ -23,9 +25,6 @@ function Home() {
   const { user } = useAuth();
   const axiosFetch = useFetch();
 
-  // axiosFetch.get('/services')
-  //   .then(data => console.log(data.data))
-  //   .catch(error => console.log(error))
 
   const {
     isPending,
@@ -37,8 +36,10 @@ function Home() {
       axiosFetch
         .get("/services")
         .then((data) => data.data)
-        .catch((error) => error),
+
   });
+
+
 
 
   const HandleChangevideo = (query) => {
@@ -96,9 +97,9 @@ function Home() {
   return (
     <>
       <section className="min-h-screen">
-        
+
         {/* ---service-section-- */}
-        <div className="py-6">
+        <div id="Service" className="py-6">
           <div className="flex  justify-center items-center w-full flex-col">
             <br />
             <h1 className="text-4xl font-bold text-[#343a40] uppercase">
@@ -121,21 +122,13 @@ function Home() {
               modules={[FreeMode, Pagination, Autoplay]}
               className="mySwiper w-full mx-auto"
             >
-              {isPending ? (
-                <Loading />
-              ) : (
-                data?.map((service) => (
-                  <SwiperSlide key={service?._id}>
-                    <ServiceCart service={service} />
-                  </SwiperSlide>
-                ))
-              )}
+              {error ? <AxiosError error={error?.message} /> : isPending ? (<Loading />) : (data?.map((service) => (<SwiperSlide key={service?._id}><ServiceCart service={service} /></SwiperSlide>)))}
             </Swiper>
           </div>
         </div>
 
         {/* ---grow-your-busniess-section */}
-        <div className="flex gap-2 items-center px-5 mt-36">
+        <div id="About" className="flex gap-2 items-center px-5 mt-36">
           <div className="w-[50%]">
             <div>
               <img src={twoGirlsworking} alt="Two Girls working together" />
@@ -436,8 +429,8 @@ function Home() {
         <br />
 
 
-         {/* --subscribe-newsletter */}
-         <div id="subscribe" className="subscribe px-[4%] ">
+        {/* --subscribe-newsletter */}
+        <div id="subscribe" className="subscribe px-[4%] ">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
@@ -510,30 +503,32 @@ function Home() {
             <button onClick={() => HandleChangevideo("GraphicDesign")} id="btnGraphic" className="videobtn">Graphic desgin </button>
           </div>
         </div>
-         <br />
-        <div className="flex gap-2 lg:flex-row-reverse items-center flex-col w-full mt-32 px-8">
+        <br />
+
+        {/* ----contact-section-- */}
+        <div id="Contact" className="flex gap-2 lg:flex-row-reverse items-center flex-col w-full mt-32 px-8">
           <div className="lg:w-[40%] ">
 
-           
-              <form id='contact' onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <input type="text" placeholder="Name" />
-                </div>
-                <div>
-                  <input type="text" placeholder="Surname" />
-                </div>
-                <div>
 
-                  <input type="text" placeholder="your Email" />
-                </div>
-                <div>
-                  <input type="text" placeholder="your Website link" />
-                </div>
+            <form id='contact' onSubmit={(e) => e.preventDefault()}>
+              <div>
+                <input type="text" placeholder="Name" />
+              </div>
+              <div>
+                <input type="text" placeholder="Surname" />
+              </div>
+              <div>
 
-                <button>Submit request</button>
-              </form>
+                <input type="text" placeholder="your Email" />
+              </div>
+              <div>
+                <input type="text" placeholder="your Website link" />
+              </div>
 
-           
+              <button>Submit request</button>
+            </form>
+
+
           </div>
           <div className="lg:w-[60%] lg:p-9">
 

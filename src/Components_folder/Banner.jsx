@@ -7,7 +7,7 @@ import shape3 from '../assets/ShapeFolder/shape3.png'
 import shape4 from '../assets/ShapeFolder/shape4.png'
 import shape5 from '../assets/ShapeFolder/shape5.png'
 import shape6 from '../assets/ShapeFolder/shape6.png'
-
+import contactImg from '../assets/contact-image.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -20,96 +20,101 @@ function Banner() {
 
 
     return (
-        <div className={`relative ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
+        <div id='Banner' className={`relative ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
 
             <div className='w-[50%] px-[6%]'>
-                <Swiper
-                    spaceBetween={10}
-                    centeredSlides={true}
-                    autoplay={{
-                        delay: 2500,
-                        disableOnInteraction: false,
-                    }}
+              {
+                location.pathname == '/Contact' || location.pathname == '/About' ? <div> 
+                    <h1 className='text-white font-bold text-7xl text-center pb-3'>{location.pathname == '/About' ? "About us" : 'Contact us'}</h1>
+                    <p className='text-center text-white text-base font-normal'>{location.pathname == '/About'? 'Home/About' : 'Home/Contact'}</p>
+                </div> :   <Swiper
+                spaceBetween={10}
+                centeredSlides={true}
+                autoplay={{
+                    delay: 2500,
+                    disableOnInteraction: false,
+                }}
 
 
-                    modules={[Autoplay, Pagination, Navigation]}
-                    className="mySwiper"
-                >
-                    <SwiperSlide>
-                        <div className='text-white '>
-                            <h1 className='text-xl pb-5 text-white font-medium'>Welcome to Mid Generation coders</h1>
-                            <h2 className='text-7xl font-bold leading-[90px] text-[#ff695f]'>
-                                Wanna build
-                                <span className='text-[#03a4ed]'> a website</span> for your
-                                <span className='text-[#2742fd]'>business</span>?
-                            </h2>
-                            <br />
+                modules={[Autoplay, Pagination, Navigation]}
+                className="mySwiper"
+            >
+                <SwiperSlide>
+                    <div className='text-white '>
+                        <h1 className='text-xl pb-5 text-white font-medium'>Welcome to Mid Generation coders</h1>
+                        <h2 className='text-7xl font-bold leading-[90px] text-[#ff695f]'>
+                            Wanna build
+                            <span className='text-[#03a4ed]'> a website</span> for your
+                            <span className='text-[#2742fd]'>business</span>?
+                        </h2>
+                        <br />
 
-                            <p className='text-base font-medium text-white w-[500px] '>
-                                Our professionals will give you the best idea and they will help you to reach your goal.
-                            </p>
-                            <br />
+                        <p className='text-base font-medium text-white w-[500px] '>
+                            Our professionals will give you the best idea and they will help you to reach your goal.
+                        </p>
+                        <br />
 
-                            <div className="flex gap-4  w-fit items-center">
-                                <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
+                        <div className="flex gap-4  w-fit items-center">
+                            <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
 
-                                <h2 className='font-normal text-xl'>+88034434090</h2>
-                            </div>
+                            <h2 className='font-normal text-xl'>+88034434090</h2>
                         </div>
-                    </SwiperSlide>
+                    </div>
+                </SwiperSlide>
 
-                    <SwiperSlide>
-                        <div className='text-white '>
-                            <h1 className='text-xl pb-5 text-[#03a4ed] font-bold uppercase'> Grow up your business!</h1>
-                            <h2 className='text-6xl font-bold leading-[70px] text-[#ff695f]'>
-                                Grow your <span className='text-white'>Busniess by</span> <span className='text-[#2742fd]'>the help of </span> <span className='text-[#03a4ed]'>Technology !</span>
-                            </h2>
-                            <br />
+                <SwiperSlide>
+                    <div className='text-white '>
+                        <h1 className='text-xl pb-5 text-[#03a4ed] font-bold uppercase'> Grow up your business!</h1>
+                        <h2 className='text-6xl font-bold leading-[70px] text-[#ff695f]'>
+                            Grow your <span className='text-white'>Busniess by</span> <span className='text-[#2742fd]'>the help of </span> <span className='text-[#03a4ed]'>Technology !</span>
+                        </h2>
+                        <br />
 
-                            <p className='text-base font-medium  w-[450px] text-white'>
+                        <p className='text-base font-medium  w-[450px] text-white'>
 
-                                A company website is a great way to increase conversion rates and reach a wider customer base.
+                            A company website is a great way to increase conversion rates and reach a wider customer base.
 
-                            </p>
-                            <br />
-
-
-                            <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'>Watch videos</button>
+                        </p>
+                        <br />
 
 
+                        <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'>Watch videos</button>
 
+
+
+                    </div>
+                </SwiperSlide>
+
+
+                <SwiperSlide>
+                    <div className='text-white '>
+                        <h1 className='text-xl pb-5 text-[#ff695f] font-medium'>Idea !</h1>
+                        <h2 className='text-7xl font-bold leading-[90px]'>
+                            Get the
+                            <span className='text-[#03a4ed]'> best Idea's</span> for your
+                            <span className='text-[#2742fd]'> business or <span className='text-[#ff695f]'>website !</span></span>
+                        </h2>
+                        <br />
+
+                        <p className='text-base font-medium  w-[550px] text-white'>
+                            Our professionals will give you the best idea and they will help you to reach your goal.
+                        </p>
+                        <br />
+
+                        <div className="flex gap-4  w-fit items-center">
+                            <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
+
+                            <h2 className='font-normal text-xl'> <i className="fa fa-phone "></i> +88034434090</h2>
                         </div>
-                    </SwiperSlide>
+                    </div>
+                </SwiperSlide>
 
-
-                    <SwiperSlide>
-                        <div className='text-white '>
-                            <h1 className='text-xl pb-5 text-[#ff695f] font-medium'>Idea !</h1>
-                            <h2 className='text-7xl font-bold leading-[90px]'>
-                                Get the
-                                <span className='text-[#03a4ed]'> best Idea's</span> for your
-                                <span className='text-[#2742fd]'> business or <span className='text-[#ff695f]'>website !</span></span>
-                            </h2>
-                            <br />
-
-                            <p className='text-base font-medium  w-[550px] text-white'>
-                                Our professionals will give you the best idea and they will help you to reach your goal.
-                            </p>
-                            <br />
-
-                            <div className="flex gap-4  w-fit items-center">
-                                <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
-
-                                <h2 className='font-normal text-xl'> <i className="fa fa-phone "></i> +88034434090</h2>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-
-                </Swiper>
+            </Swiper>
+              }
 
             </div>
             <div className='w-[50%] px-9 '>
-                <img className='bannerimg' src={BannerImg} alt="" />
+                <img className='bannerimg' src={`${location.pathname == '/Contact' || location.pathname == '/About' ? contactImg : BannerImg}`} alt="" />
 
 
 

@@ -14,6 +14,13 @@ import member1 from "../assets/OurTeamMember/member1.png"
 import member2 from "../assets/OurTeamMember/member2.png"
 import member3 from "../assets/OurTeamMember/member3.png"
 import member4 from "../assets/OurTeamMember/member4.png"
+import aboutSlide1 from "../assets/about-slide.png";
+import AxiosError from "./AxiosError.jsx";
+
+
+
+
+
 
 function About_us() {
   const axiosFetch = useFetch();
@@ -172,10 +179,10 @@ function About_us() {
                   Apon Mahbub
                 </h3>
                 <p>
-                 
-                 Front End Developer <br />
+
+                  Front End Developer <br />
                   & Creative Director
-                  </p>
+                </p>
                 <div className="social-links">
 
                   <ul>
@@ -259,7 +266,7 @@ function About_us() {
               </div>
               <div className="member-content">
                 <h3>
-                  Ashiqul islam 
+                  Ashiqul islam
                 </h3>
                 <p>
                   SEO Specialist <br />
@@ -296,6 +303,131 @@ function About_us() {
         </section>
 
       </div>
+
+      <br />
+      <br />
+      <br />
+
+      {/* ----what-our-client-say */}
+      <div >
+
+        <div className='text-center space-y-2'>
+          <h2 className='text-4xl font-semibold text-[#252525]'>What Our client's Say</h2>
+          <span className="text-2xl text-[#ff695f] opacity-[0.65] pt-2">
+            our client's
+          </span>
+
+
+        </div>
+
+        <br />
+        <br />
+
+        <Swiper
+          spaceBetween={10}
+          centeredSlides={true}
+          navigation={true}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+
+
+          modules={[Pagination, Navigation]}
+          className="mySwiper"
+        >
+
+
+
+          <SwiperSlide>
+            <div className="flex items-center gap-2 ">
+              <div className="w-[40%]">
+                <img src={aboutSlide1} alt="" />
+              </div>
+              <div className="w-[55%] ">
+
+                <div>
+                  <h1 className="text-3xl font-[600] text-[#2742fd]">Khairul islam , <span className="text-[#343a40] text-sm font-normal">Company of Automobile</span></h1>
+                  <br />
+                  <p className="text-xl text-[#292929] leading-[1.6] font-medium">Mid Generation Coders has been an absolute game-changer for our business. Their tech services are unparalleled! The team seamlessly integrated innovative solutions, optimizing our operations and boosting efficiency. Their commitment to understanding our unique needs and delivering tailored tech solutions was impressive. Thanks to them, our growth trajectory has been phenomenal.</p>
+                </div>
+
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex items-center gap-2 ">
+              <div className="w-[40%]">
+                <img src={aboutSlide1} alt="" />
+              </div>
+              <div className="w-[55%] ">
+
+                <div>
+                  <h1 className="text-3xl font-[600] text-[#2742fd]">Abdur Rahman, <span className="text-[#343a40] text-sm font-normal">Maya Fashion</span></h1>
+                  <br />
+                  <p className="text-xl text-[#292929] leading-[1.6] font-medium">
+                    Mid Generation Coders is a gem in the tech service industry. Their expertise and professionalism are evident from the get-go. They didn't just provide a service; they became strategic partners, guiding us through complex technological advancements. Their solutions were not just about fixing problems; they were about enhancing our capabilities for the long run. Working with them was not just a service experience; it was a journey towards technological excellence.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex items-center gap-2 ">
+              <div className="w-[40%]">
+                <img src={aboutSlide1} alt="" />
+              </div>
+              <div className="w-[55%] ">
+
+                <div>
+                  <h1 className="text-3xl font-[600] text-[#2742fd]">Ashiqul islam ayon , <span className="text-[#343a40] text-sm font-normal">MidGeneration.com - ower</span></h1>
+                  <br />
+                  <p className="text-xl text-[#292929] leading-[1.6] font-medium">
+                    I can't recommend Mid Generation Coders enough! Their team's dedication to delivering top-notch tech services is unmatched. They not only met but exceeded our expectations. Their attention to detail, promptness in addressing concerns, and ability to adapt to our evolving needs made the collaboration seamless. Thanks to them, our digital infrastructure is now robust, reliable, and ready for future challenges.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="flex items-center gap-2 ">
+              <div className="w-[40%]">
+                <img src={aboutSlide1} alt="" />
+              </div>
+              <div className="w-[55%] ">
+
+                <div>
+                  <h1 className="text-3xl font-[600] text-[#2742fd]">Mark zuckerberg, <span className="text-[#343a40] text-sm font-normal">Facebook.com - seo & owner</span></h1>
+                  <br />
+                  <p className="text-xl text-[#292929] leading-[1.6] font-medium">
+                    I can't recommend Mid Generation Coders enough! Their team's dedication to delivering top-notch tech services is unmatched. They not only met but exceeded our expectations. Their attention to detail, promptness in addressing concerns, and ability to adapt to our evolving needs made the collaboration seamless. Thanks to them, our digital infrastructure is now robust, reliable, and ready for future challenges.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+          </SwiperSlide>
+
+
+
+
+
+        </Swiper>
+
+
+
+
+      </div>
+
+
+      <br />
+      <br />
+      <br />
     </section>
   );
 }

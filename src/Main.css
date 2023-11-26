@@ -7,6 +7,7 @@
 body {
   scroll-behavior: smooth;
   max-width: 1540px;
+  margin: auto;
   font-family: "Noto Sans Display", sans-serif;
 }
 
@@ -36,6 +37,15 @@ body {
 }
 
 /* --footer-section-socialicons-hover-effect-design */
+#footerbg{
+  background: url("../src/assets/Header-bg.png");
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  
+}
 #socialIcons > div {
   border: 1px solid white;
   padding: 10px 15px;

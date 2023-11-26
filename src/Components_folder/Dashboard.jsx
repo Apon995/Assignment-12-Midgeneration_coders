@@ -2,7 +2,18 @@ import React from 'react'
 
 function Dashboard() {
   return (
-    <div>Dashboard</div>
+    <>
+    <section className='min-h-screen'>
+
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    </>
   )
 }
 

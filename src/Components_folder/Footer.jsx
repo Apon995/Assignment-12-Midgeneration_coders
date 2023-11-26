@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <div className='w-full xl:px-[3%] px-[1%] bg-[#000000] text-[#FFF] py-9 footer md:text-start text-center ' >
+    <div id='footerbg' className='w-full xl:px-[3%] px-[1%]  text-[#FFF] py-9 footer md:text-start text-center ' >
 
       <div className=' flex md:flex-row flex-col items-center justify-between py-9'>
         {/* --footer-1st-col-- */}

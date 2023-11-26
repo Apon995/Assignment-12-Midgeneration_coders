@@ -20,9 +20,9 @@ function Banner() {
 
 
     return (
-        <div id='Banner' className={`relative ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
+        <div id='Banner' className={` px-[5%] gap-4 ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
 
-            <div className='w-[50%] px-[6%]'>
+            <div className='w-[50%] '>
               {
                 location.pathname == '/Contact' || location.pathname == '/About' ? <div> 
                     <h1 className='text-white font-bold text-7xl text-center pb-3'>{location.pathname == '/About' ? "About us" : 'Contact us'}</h1>
@@ -92,7 +92,7 @@ function Banner() {
                         <h2 className='text-7xl font-bold leading-[90px]'>
                             Get the
                             <span className='text-[#03a4ed]'> best Idea's</span> for your
-                            <span className='text-[#2742fd]'> business or <span className='text-[#ff695f]'>website !</span></span>
+                            <span className='text-[#2742fd]'> business . <span className='text-[#ff695f]'></span></span>
                         </h2>
                         <br />
 
@@ -113,7 +113,7 @@ function Banner() {
               }
 
             </div>
-            <div className='w-[50%] px-9 '>
+            <div className='w-[50%]'>
                 <img className='bannerimg' src={`${location.pathname == '/Contact' || location.pathname == '/About' ? contactImg : BannerImg}`} alt="" />
 
 

@@ -6,7 +6,7 @@
 
 body {
   scroll-behavior: smooth;
-  max-width: 1540px;
+  max-width: 100vw;
   margin: auto;
   font-family: "Noto Sans Display", sans-serif;
 }
@@ -472,6 +472,23 @@ form .text h3 a:hover {
   height: 52px;
   margin: 18px 0;
   position: relative;
+}
+
+.wrapper form .selectOption{
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding: 10px 4px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #333;
+  border: 2px solid #c7bebe;
+  border-radius: 6px;
+
+}
+.wrapper form .selectOption > select{
+  width: 100%;
+  outline: none;
 }
 
 .password-box > i {

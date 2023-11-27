@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../CustomHooks_folder/useAuth';
 import Swal from 'sweetalert2';
+import { useQuery } from '@tanstack/react-query';
+import useFetch from '../CustomHooks_folder/useFetch';
 
 function Register() {
 
@@ -11,8 +13,9 @@ function Register() {
   const [accept, setAccept] = useState(false);
   const [terms, setTerms] = useState(false);
   const [Error, setError] = useState(null);
-  const { RegisterEmailorPass } = useAuth();
+  const { RegisterEmailorPass ,  GoogleLogin , user} = useAuth();
   const navigate = useNavigate();
+  const axiosFetch = useFetch();
 
 
 
@@ -31,8 +34,10 @@ function Register() {
 
     const from = new FormData(e.currentTarget);
     const email = from.get('email');
+    const name = from.get('name');
     const createPassword = from.get('createPassword');
     const confirmPassword = from.get('confirmPassword');
+    const UserRoll = from.get('user-roll');
 
     if (confirmPassword !== createPassword) {
 
@@ -54,24 +59,43 @@ function Register() {
       return;
     }
 
+    const obj = {
+      "user_name": name,
+      "user_email": email,
+      "user_roll": UserRoll
+
+    }
 
 
     RegisterEmailorPass(email, confirmPassword)
       .then(result => {
-        e.target.reset();
         if (result) {
-          Swal.fire({
-            title: 'Account Register Succesfull !',
-            text: 'your account have Logged !',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 1000,
+          axiosFetch.post('/user', obj)
+            .then(res => {
+              if (res?.data) {
+                e.target.reset();
+                Swal.fire({
+                  title: 'Account Register Succesfull !',
+                  text: 'your account have Logged !',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 1000,
 
-          })
-          navigate('/')
-          
+                })
+                navigate('/')
+
+              }
+
+
+            })
+            .catch(error => console.log(error?.message))
+
+
+
+
+
+
         }
-
       })
       .catch(error => {
         if ('auth/email-already-in-use') {
@@ -92,9 +116,28 @@ function Register() {
   }
 
 
+  const HandleGoogleLogin = () => {
+    if(user){
+       Swal.fire({
+        title: 'User Already exists',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1000,
+
+      })
+      return;
+    }
+    GoogleLogin()
+    .then(res => {
+      console.log(res)
+    })
+    .catch(error => console.log(error))
+  }
+
+
   return (
     <>
-      
+
       <br />
       <br />
       <br />
@@ -107,6 +150,12 @@ function Register() {
           {Error && <span style={{ color: 'red', fontSize: '14px', fontWeight: '500', }}>{Error}</span>}
           <br />
           <form onSubmit={HandleSubmitRegister}>
+            <div className="selectOption">
+              <select name="user-roll" id="user-roll" >
+                <option value="employee">Employee</option>
+                <option value="Hr">Hr</option>
+              </select>
+            </div>
             <div className="input-box">
               <input type="text" name='name' placeholder="Enter your name" required />
             </div>
@@ -129,12 +178,18 @@ function Register() {
             </div>
             <br />
             <button className='btn-create'>Create Now</button>
-            <br />
-            <br />
-            <div className="text">
-              <h3>Already have an account? <Link to='/Login'>Login now</Link></h3>
-            </div>
           </form>
+          <br />
+
+          <div className='social-icons'>
+            <button onClick={HandleGoogleLogin}><i className="fa-brands fa-google"></i></button>
+            <button><i className="fa-brands fa-facebook"></i></button>
+            <button><i className="fa-brands fa-linkedin"></i></button>
+          </div>
+          <br />
+          <div className="text">
+            <h3>Already have an account? <Link to='/Login'>Login now</Link></h3>
+          </div>
         </div>
       </div>
 
@@ -146,9 +201,9 @@ function Register() {
 
 
 
-    <br />
-    <br />
-    <br />
+      <br />
+      <br />
+      <br />
     </>
   )
 }

@@ -42,7 +42,7 @@ function Navbar() {
   return (
 
     <>
-      <nav style={{ backgroundColor: navbar ? '#2742fd' : 'inherit', transition: 'background 0.2s', position:'fixed',  zIndex: 999 }} className={`flex top-0 max-w-[1540px]  w-full items-center  justify-between px-[2%] py-4 text-white`}>
+      <nav style={{ backgroundColor: navbar ? '#2742fd' : 'inherit', transition: 'background 0.2s', position:'fixed',  zIndex: 999 }} className={`flex top-0 max-w-[100vw]  w-full items-center  justify-between px-[2%] py-4 text-white`}>
         <div className='flex items-center gap-12'>
 
           <div className='flex items-center flex-col uppercase font-extrabold text-xl leading-[24px]'>

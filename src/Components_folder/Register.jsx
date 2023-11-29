@@ -10,12 +10,15 @@ function Register() {
 
   const [createShowpass, setCreateshowpass] = useState(false);
   const [ConfirmShowpass, setConfirmShowpass] = useState(false);
+  
   const [accept, setAccept] = useState(false);
   const [terms, setTerms] = useState(false);
   const [Error, setError] = useState(null);
-  const { RegisterEmailorPass ,  GoogleLogin , user} = useAuth();
+  const { RegisterEmailorPass, GoogleLogin, user } = useAuth();
   const navigate = useNavigate();
   const axiosFetch = useFetch();
+
+
 
 
 
@@ -71,20 +74,20 @@ function Register() {
       .then(result => {
         if (result) {
           axiosFetch.post('/user', obj)
-            .then(res => {
-              if (res?.data) {
-                e.target.reset();
-                Swal.fire({
-                  title: 'Account Register Succesfull !',
-                  text: 'your account have Logged !',
-                  icon: 'success',
-                  showConfirmButton: false,
-                  timer: 1000,
+            .then(() => {
 
-                })
-                navigate('/')
+              e.target.reset();
+              Swal.fire({
+                title: 'Account Register Succesfull !',
+                text: 'your account have Logged !',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000,
 
-              }
+              })
+              navigate('/')
+
+
 
 
             })
@@ -117,8 +120,8 @@ function Register() {
 
 
   const HandleGoogleLogin = () => {
-    if(user){
-       Swal.fire({
+    if (user) {
+      Swal.fire({
         title: 'User Already exists',
         icon: 'warning',
         showConfirmButton: false,
@@ -127,11 +130,90 @@ function Register() {
       })
       return;
     }
-    GoogleLogin()
-    .then(res => {
-      console.log(res)
-    })
-    .catch(error => console.log(error))
+
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: true
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Please Choose user Roll ?",
+      text: "Choose your roll employee or hr ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Employee",
+      cancelButtonText: "Hr",
+      reverseButtons: true
+    }).then((result) => {
+      if (result?.isConfirmed) {
+        GoogleLogin()
+          .then(res => {
+            const obj = {
+              "user_name": res?.user?.displayName,
+              "user_email": res?.user?.email,
+              "user_roll": "Employee"
+
+            }
+
+            axiosFetch.post('/user', obj)
+            .then(()=>{
+              Swal.fire({
+                title: 'Account Register Succesfull !',
+                text: 'your account have Logged !',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000,
+
+              })
+              navigate('/')
+
+            })
+            .catch(error => console.log(error));
+            
+          })
+          .catch(error => console.log(error))
+      }
+      else {
+        GoogleLogin()
+        .then(res => {
+          const obj = {
+            "user_name": res?.user?.displayName,
+            "user_email": res?.user?.email,
+            "user_roll": "Hr"
+
+          }
+
+          axiosFetch.post('/user', obj)
+            .then(()=>{
+              Swal.fire({
+                title: 'Account Register Succesfull !',
+                text: 'your account have Logged !',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1000,
+
+              })
+              navigate('/')
+
+            })
+            .catch(error => console.log(error));
+
+          
+        })
+        .catch(error => console.log(error))
+      }
+    });
+
+
+
+
+
+
+
+
   }
 
 

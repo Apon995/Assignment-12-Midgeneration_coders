@@ -7,12 +7,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './Components_folder/Home.jsx';
 import Contact_Us from './Components_folder/Contact_Us.jsx';
 import About_us from './Components_folder/About_us.jsx';
-import Dashboard from './Components_folder/Dashboard.jsx';
 import Login from './Components_folder/Login.jsx';
 import Register from './Components_folder/Register.jsx';
 import AuthProvider from './Context_provider/AuthProvider.jsx';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Private from './Components_folder/Private.jsx';
+import Dashboard from './DashboardComponents/Dashboard.jsx';
+import Employe from './DashboardComponents/Employe.jsx';
+import Pay from './DashboardComponents/Pay.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -41,10 +44,21 @@ const router = createBrowserRouter([
       {
         path: '/Register',
         element: <Register />
+      }
+    ]
+  },
+  {
+    path: '/Dashboard',
+    element: <Private><Dashboard /></Private>,
+    errorElement: <NotFound />,
+    children: [
+      {
+        path: '/Dashboard/employee',
+        element: <Employe />
       },
       {
-        path: '/Dashboard',
-        element: <Private> <Dashboard /></Private>
+        path: '/Dashboard/pay',
+        element: <Pay />
       }
     ]
   }

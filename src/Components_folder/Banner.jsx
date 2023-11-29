@@ -122,7 +122,7 @@ function Banner() {
 
 
 
-            <div>
+            <div className='lg:block hidden'>
                 <img className='shape1' src={shape1} alt="" />
                 <img className='shape2' src={shape2} alt="" />
                 <img className='shape3' src={shape3} alt="" />

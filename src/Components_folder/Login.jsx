@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../CustomHooks_folder/useAuth';
+import Swal from 'sweetalert2';
+import useFetch from '../CustomHooks_folder/useFetch';
 
 
 
@@ -10,7 +12,8 @@ function Login() {
   const [Error, setError] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { LoginEmailorPass, GoogleLogin , user} = useAuth();
+  const { LoginEmailorPass, GoogleLogin, user } = useAuth();
+  const axiosFetch = useFetch();
 
 
 
@@ -55,19 +58,102 @@ function Login() {
 
   const HandleGoogleLogin = () => {
     if (user) {
-      return;
+      Swal.fire({
+        title: 'User Already exists',
+        icon: 'warning',
+        showConfirmButton: false,
+        timer: 1000,
 
-    }
-    GoogleLogin()
-      .then(res => {
-        if (res?.providerId) {
-
-          navigate(location?.state ? location?.state : '/')
-        }
       })
-      .catch(error => console.log(error))
+      return;
+    }
+
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: true
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Please Choose user Roll ?",
+      text: "Choose your roll employee or hr ?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Employee",
+      cancelButtonText: "Hr",
+      reverseButtons: true
+    }).then((result) => {
+      if (result?.isConfirmed) {
+        GoogleLogin()
+          .then(res => {
+            const obj = {
+              "user_name": res?.user?.displayName,
+              "user_email": res?.user?.email,
+              "user_roll": "Employee"
+
+            }
+
+            axiosFetch.post('/user', obj)
+              .then(() => {
+                Swal.fire({
+                  title: 'Account Login Succesfull !',
+                  text: 'your account have Logged !',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 1000,
+
+                })
+                navigate(location?.state ? location?.state : '/')
+
+              })
+              .catch(error => console.log(error));
+
+          })
+          .catch(error => console.log(error))
+      }
+      else {
+        GoogleLogin()
+          .then(res => {
+            const obj = {
+              "user_name": res?.user?.displayName,
+              "user_email": res?.user?.email,
+              "user_roll": "Hr"
+
+            }
+
+            axiosFetch.post('/user', obj)
+              .then(() => {
+                Swal.fire({
+                  title: 'Account Login Succesfull !',
+                  text: 'your account have Logged !',
+                  icon: 'success',
+                  showConfirmButton: false,
+                  timer: 1000,
+
+                })
+                navigate(location?.state ? location?.state : '/')
+                
+
+              })
+              .catch(error => console.log(error));
+
+
+          })
+          .catch(error => console.log(error))
+      }
+    });
+
+
+
+
+
+
+
 
   }
+
 
 
 
@@ -112,9 +198,9 @@ function Login() {
 
 
 
-    <br />
-    <br />
-    <br />
+      <br />
+      <br />
+      <br />
     </>
   )
 }

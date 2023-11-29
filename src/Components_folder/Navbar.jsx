@@ -63,7 +63,7 @@ function Navbar() {
               <li>
                 <NavLink to={'/Contact'}>Contact us</NavLink>
               </li>
-              <li><NavLink to='/Dashboard' >Dashboard</NavLink></li>
+              <li><NavLink to='/Dashboard/employee' >Dashboard</NavLink></li>
             </ul>
           </div>
         </div>

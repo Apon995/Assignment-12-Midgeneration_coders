@@ -1,15 +1,34 @@
-import React, { createContext, useState ,useEffect } from 'react'
+import React, { createContext, useState, useEffect } from 'react'
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import auth from '../../firebase.config';
 import Swal from 'sweetalert2';
+import useFetch from '../CustomHooks_folder/useFetch';
+
+
+
 
 export const AuthContext = createContext(null);
+
+
+
+
+
+
 
 function AuthProvider({ children }) {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const axiosFetch = useFetch();
+  const [data, setData] = useState()
+
+
+  const ReceiveSalary =(salaryobj)=>{
+    setData(salaryobj);
+
+
+  }
 
   const GoogleLogin = () => {
     return signInWithPopup(auth, googleProvider);
@@ -30,14 +49,18 @@ function AuthProvider({ children }) {
     setLoading(true);
     signOut(auth)
       .then((res) => {
-        if(res == undefined){
-          Swal.fire({
-            title: 'Sign out successfull !',
-            icon: 'success',
-            showConfirmButton: false,
-            timer: 2000,
+        if (res == undefined) {
+          axiosFetch.post('/jwtTokenClear', {}, { withCredentials: true })
+            .then(() => {
+              Swal.fire({
+                title: 'Sign out successfull !',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 2000,
 
-          })
+              })
+            })
+            .catch(error => { console.log(error) })
         }
       })
       .catch(error => console.log(error));
@@ -46,9 +69,23 @@ function AuthProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
-
+      const loggeduser = { email: currentUser?.email || user?.email };
       setUser(currentUser);
       setLoading(false)
+
+      if (currentUser) {
+
+        axiosFetch.post('/jwtToken', loggeduser, { withCredentials: true })
+          .then(res => {
+            console.log(res.data);
+          })
+          .catch(error => console.log(error))
+
+
+      }
+      else {
+        setUser(null);
+      }
 
     })
 
@@ -82,7 +119,9 @@ function AuthProvider({ children }) {
     GoogleLogin,
     RegisterEmailorPass,
     LoginEmailorPass,
-    Logout
+    Logout,
+    ReceiveSalary,
+    data
 
 
   }

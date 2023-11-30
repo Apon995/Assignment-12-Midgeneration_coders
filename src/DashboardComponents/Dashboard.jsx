@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import Dashboardsvg from '../assets/svgFolder/Dashboard.svg'
+import useAuth from '../CustomHooks_folder/useAuth'
+import useFetch from '../CustomHooks_folder/useFetch';
 
 function Dashboard() {
+    const { user } = useAuth();
+    const [usertype, setUsertype] = useState();
+    const axiosFetch = useFetch();
+
+    useEffect(() => {
+        axiosFetch.post('/userType', { email: user?.email })
+            .then(res => {
+                setUsertype(res.data?.user_roll)
+            })
+            .catch(error => console.log(error))
+    }, [])
+
+
+
+
+
+
+
+
+
+
+
     return (
         <>
             <div className='min-h-screen flex gap-1 '>
@@ -17,15 +41,23 @@ function Dashboard() {
                         </div>
 
                         <div className='pt-3'>
+
+                            {/* ---dynamic-routes-dependsOn user type--  */}
+
+
                             <ul className='flex flex-col gap-2'>
 
-                                <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/'><i className="fa-solid fa-house"></i> Home</NavLink>
-                                    {/* <i className="fa-solid fa-circle-chevron-right"></i> */}
-                                </li>
+                                <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/'><i className="fa-solid fa-house"></i> Home</NavLink></li>
+                                <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/MyProfile'><i className="fa-regular fa-user"></i> My profile</NavLink></li>
 
-                                <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/employee'><i className="fa-solid fa-users"></i> Employe</NavLink></li>
+                                {usertype == 'Hr' || usertype == 'hr' || usertype == "HR" || usertype == 'hR' ? <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/employee'><i className="fa-solid fa-users"></i> Employe</NavLink></li> : ""}
+                                {usertype == 'employee' || usertype == "Employee" || usertype == "Employe" || usertype == "employe" || usertype == "EMPLOYE" ? <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/PayHistory'><i className="fa-solid fa-clock-rotate-left"></i> Payment History</NavLink></li> : ""}
+                                {usertype == 'Admin' || usertype == "admin" || usertype == "ADMIN" ? <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/Alluser'><i className="fa-solid fa-users"></i> All Member</NavLink></li> : ""}
+                                {usertype == 'Admin' || usertype == "admin" || usertype == "ADMIN" ? <li ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to='/Dashboard/VerifiedEmploye'><i className="fa-solid fa-user-check"></i> Verified employee</NavLink></li> : ""}
 
                             </ul>
+
+
                         </div>
                     </div>
 
@@ -36,9 +68,9 @@ function Dashboard() {
                         </div>
                         <div className='pt-3'>
                             <ul>
-                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base  inline-flex items-center gap-2" to={'/'} ><i className="fa-solid fa-phone"></i>  Call us</NavLink></li>
-                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to={'/'} ><i className="fa-brands fa-rocketchat"></i>  Chat us</NavLink></li>
-                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to={'/'} ><i className="fa-solid fa-envelope"></i>  email us</NavLink></li>
+                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base  inline-flex items-center gap-2" to={'/Contact'} ><i className="fa-solid fa-phone"></i>  Call us</NavLink></li>
+                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to={'/Contact'} ><i className="fa-brands fa-rocketchat"></i>  Chat us</NavLink></li>
+                                <li  ><NavLink className=" hover:bg-[#4070f4] rounded-md w-full py-2 px-1 hover:cursor-pointer font-normal text-base inline-flex items-center gap-2" to={'/Contact'} ><i className="fa-solid fa-envelope"></i>  email us</NavLink></li>
                             </ul>
                         </div>
                     </div>

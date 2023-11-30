@@ -690,9 +690,7 @@ form#contact button:hover {
   background-color: #2742fd;
   color: white;
 }
-/* .styled-table tbody tr:hover{
-  background-color: #d3d3d3;
-} */
+
 
 .styled-table tbody tr > td:hover{
   cursor: pointer;
@@ -747,10 +745,9 @@ form#contact button:hover {
 }
 
 .selectMonth select {
-  padding: 8px;
+  padding: 8px 10px;
   border-radius: 5px;
   font-size: 16px;
-  width: 150px;
   border:1px solid #d9d9d9;
 }
 
@@ -759,4 +756,70 @@ form#contact button:hover {
 }
 .selectMonth:active{
   border:1px solid #d9d9d9;
+}
+
+
+
+
+
+
+/* ---UpdataPage-design-- */
+
+.update-page {
+  min-height: 90vh;
+}
+
+.update-page > form > .update-form {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+}
+.update-page > form > .update-form > div {
+  width: 50%;
+}
+
+.input {
+  width: 90%;
+  padding: 15px 5px;
+  border-radius: 5px;
+  background-color: inherit;
+  font-size: 18px;
+  color: #151515;
+  font-weight: 500;
+  border: 2px solid #a2a2a2;
+  outline: none;
+  transition: border-color 0.8s;
+  resize: none;
+}
+
+.input::placeholder {
+  color: #a2a2a2;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.input:focus {
+  border-color: #2742fd;
+}
+
+.btn-full{
+    width: 96%;
+    padding: 15px 0px;
+    background-color: #2742fd;
+    color:#FFF;
+    border:none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+
+
+}
+
+.btn-full:hover{
+    cursor: pointer;
+}
+
+.btn-full:active{
+    background-color: inherit;
+    color:#151515;
 }

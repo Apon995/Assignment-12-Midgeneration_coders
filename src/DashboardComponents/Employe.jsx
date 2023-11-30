@@ -13,13 +13,44 @@ import useAuth from "../CustomHooks_folder/useAuth";
 
 
 
+
+
 function Employe() {
   const axiosFetch = useFetch();
   const [isverified, setIsverified] = useState(false);
   const navigate = useNavigate();
-  const { ReceiveSalary } = useAuth()
+  const { ReceiveObj } = useAuth()
+  const [year, setyear] = useState()
+  const [month, setMonth] = useState()
+
+  useEffect(() => {
+
+    function generateYears(startYear, endYear) {
+      const years = [];
+      for (let year = startYear; year <= endYear; year++) {
+        years.push(year);
+      }
+      return years;
+    }
+    function generateMonths() {
+      return [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+    }
 
 
+    const currentYear = new Date().getFullYear();
+
+
+    const years = generateYears(1900, currentYear);
+
+
+    const months = generateMonths();
+
+    setMonth(months);
+    setyear(years);
+  }, [])
 
 
   const {
@@ -29,12 +60,14 @@ function Employe() {
     refetch,
   } = useQuery({
     queryKey: ["employeData"],
-    queryFn: () => axiosFetch.get("/employes").then((data) => data.data),
+    queryFn: () => axiosFetch.get(`/employes?Role=${"employee"}`).then((data) => data.data),
   });
+
+  
 
   const handleveified = (verified, email, currentVerifiedinfo) => {
     const obj = {
-      employe_email: email,
+      user_email: email,
       verified: verified,
     };
 
@@ -46,6 +79,7 @@ function Employe() {
         icon: "question",
         denyButtonText: `cencel`,
       }).then((result) => {
+  
         if (result?.isConfirmed) {
           axiosFetch
             .patch("/employes", obj)
@@ -107,80 +141,100 @@ function Employe() {
         }
       });
     }
+
+
+
+
   };
 
 
 
 
   const handlePaysalary = async (salaryAmount, name, email) => {
-    const { value: formValues } = await Swal.fire({
-      title: "Enter Employe salary , Month or year !",
-      confirmButtonText: "submit",
-      showDenyButton: true,
-      denyButtonText: 'Cencel',
 
-      html: `
-      <select class="selectMonth" id="months" name="months">
-      <option value="January">January</option>
-        <option value="February">February</option>
-        <option value="March">March</option>
-        <option value="April">April</option>
-        <option value="May">May</option>
-        <option value="June">June</option>
-        <option value="July">July</option>
-        <option value="August">August</option>
-        <option value="September">September</option>
-        <option value="October">October</option>
-        <option value="November">November</option>
-        <option value="December">December</option>
-      </select>
-      <br/>
-      <input type="text" id="year" class="swal2-input" placeholder='Type year Name' />
-      
-      `,
-      focusConfirm: false,
-    })
+    Swal.fire({
+      title: 'Select Month and Year',
+      html:
+        `<div>
 
-    const obj = {
-      "Salary": salaryAmount,
-      "Name": name,
-      "Email": email,
-      "MonthName": document.getElementById('months')?.value,
-      "YearName": document.getElementById('year')?.value
-    }
+          <select class="selectMonth" id="month-select" class="swal2-select">
+            ${month?.map((month) => `<option value="${month}">${month}</option>`).join('')}
+          </select>
+          <br/><br/>
+          
+          <select class="selectMonth w-[57%]" id="year-select" class="swal2-select">
+            ${year?.map((year) => `<option value="${year}">${year}</option>`).join('')}
+          </select>
+        </div>`,
+      showCancelButton: true,
+      confirmButtonText: 'Select',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        if (!document.getElementById('month-select')?.value || !document.getElementById('year-select')?.value) {
+          Swal.fire({
+            position: "center",
+            icon: "warning",
+            title: "Please select Year or Month",
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
+          return;
 
-    if (formValues) {
+        }
+        const obj = {
+          "Salary": salaryAmount,
+          "Name": name,
+          "Email": email,
+          "MonthName": document.getElementById('month-select')?.value,
+          "YearName": document.getElementById('year-select')?.value
+        }
 
-      if (!document.getElementById('months')?.value || !document.getElementById('year')?.value) {
-        return Swal.fire({
-          title: "Please enter month or year !",
-          icon: "warning",
+        ReceiveObj(obj)
+        console.log(obj)
+
+        setTimeout(() => {
+          navigate("/Dashboard/pay")
+
+        }, 2000);
+
+      }
+      else {
+        Swal.fire({
+          position: "center",
+          icon: "info",
+          title: "Payment processing cancel! ",
           showConfirmButton: false,
           timer: 1500,
         });
+
       }
-
-      ReceiveSalary(obj)
-      navigate("/Dashboard/pay")
+    });
 
 
 
 
 
-    }
-    else {
-      Swal.fire({
-        title: "Pay processing cencel",
-        icon: "warning",
-        showConfirmButton: false,
-        timer: 1500,
-      });
 
-    }
+
   };
 
 
+
+
+  const HandleDetails = (email) => {
+
+    axiosFetch.get(`/paymentInfo?email=${email}`)
+      .then(res => {
+        ReceiveObj(res?.data)
+        navigate('/Dashboard/Chart')
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+  }
 
 
 
@@ -227,10 +281,13 @@ function Employe() {
     });
   };
 
+  
+
   return (
     <>
+      
       <div className="py-8 px-[5%]">
-        <h1 className="text-3xl font-medium text-[#343a40]">Our Employe's</h1>
+        <h1 className="text-3xl font-medium text-[#343a40] ">Our Employe's</h1>
 
         {/* --employee-Table-row  */}
 
@@ -257,14 +314,14 @@ function Employe() {
               <tbody>
                 {data?.map((employe) => (
                   <tr key={employe?._id}>
-                    <td>{employe?.employeeName}</td>
-                    <td>{employe?.employeeEmail}</td>
+                    <td>{employe?.user_name}</td>
+                    <td>{employe?.user_email}</td>
                     <td>
                       <button
                         onClick={() => {
                           handleveified(
                             isverified,
-                            employe?.employeeEmail,
+                            employe?.user_email,
                             employe?.verified
                           ),
                             setIsverified(!isverified);
@@ -277,17 +334,17 @@ function Employe() {
                         )}
                       </button>
                     </td>
-                    <td>{employe?.Bank_Account_no}</td>
-                    <td>${employe?.salary}</td>
+                    <td>{employe?.user_Bank_Ac_no}</td>
+                    <td>${employe?.user_salary}</td>
                     <td>
 
                       <button
                         disabled={employe?.verified != true}
                         onClick={() =>
                           handlePaysalary(
-                            employe?.salary,
-                            employe?.employeeName,
-                            employe?.employeeEmail
+                            employe?.user_salary,
+                            employe?.user_name,
+                            employe?.user_email
                           )
                         }
                         className="pay-btn disabled:opacity-50 "
@@ -298,7 +355,7 @@ function Employe() {
                     </td>
 
                     <td>
-                      <button className="details-btn">Details</button>
+                      <button onClick={() => HandleDetails(employe?.user_email)} className="details-btn">Details</button>
                     </td>
                     <td>
                       <button

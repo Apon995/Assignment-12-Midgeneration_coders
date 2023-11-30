@@ -15,6 +15,12 @@ import Private from './Components_folder/Private.jsx';
 import Dashboard from './DashboardComponents/Dashboard.jsx';
 import Employe from './DashboardComponents/Employe.jsx';
 import Pay from './DashboardComponents/Pay.jsx';
+import Chart from './DashboardComponents/Chart.jsx';
+import MyProfile from './DashboardComponents/MyProfile.jsx';
+import PaymentDetails from './DashboardComponents/PaymentDetails.jsx';
+import AllUsers from './DashboardComponents/AllUsers.jsx';
+import VerifiedEmploye from './DashboardComponents/VerifiedEmploye.jsx';
+import Update from './DashboardComponents/Update.jsx';
 
 
 const router = createBrowserRouter([
@@ -53,13 +59,38 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
+        path : '/Dashboard/MyProfile',
+        element : <MyProfile/>
+
+      },
+      {
         path: '/Dashboard/employee',
         element: <Employe />
       },
       {
         path: '/Dashboard/pay',
         element: <Pay />
-      }
+      },
+      {
+        path: '/Dashboard/Chart',
+        element: <Chart/>
+      },
+      {
+        path: '/Dashboard/PayHistory',
+        element: <PaymentDetails/>
+      },
+      {
+        path: '/Dashboard/Alluser',
+        element: <AllUsers/>
+      },
+      {
+        path: '/Dashboard/VerifiedEmploye',
+        element: <VerifiedEmploye/>
+      },
+      {
+        path: '/Dashboard/update',
+        element: <Update/>
+      },
     ]
   }
 ])

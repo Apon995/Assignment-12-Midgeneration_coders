@@ -91,7 +91,10 @@ function Login() {
             const obj = {
               "user_name": res?.user?.displayName,
               "user_email": res?.user?.email,
-              "user_roll": "Employee"
+              "user_roll": "employee",
+              "user_salary": 25000,
+              "user_Bank_Ac_no": 23043343433,
+              "verified": false
 
             }
 
@@ -119,7 +122,10 @@ function Login() {
             const obj = {
               "user_name": res?.user?.displayName,
               "user_email": res?.user?.email,
-              "user_roll": "Hr"
+              "user_roll": "Hr",
+              "user_salary": 35000,
+              "user_Bank_Ac_no": 23043343433,
+              "verified": false
 
             }
 

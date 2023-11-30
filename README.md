@@ -1,5 +1,11 @@
 Project Name : MidGeneration_Coders 
 
+Assignment Category: assignment12_category_0004
+
+Admin name : Jon the don 
+Admin email: jonthedon@gmail.com
+Admin password : Abc@123
+
 MidGeneration Coder's Live link : https://midgenerationcoders.web.app
 
 

@@ -22,10 +22,11 @@ function AuthProvider({ children }) {
   const googleProvider = new GoogleAuthProvider();
   const axiosFetch = useFetch();
   const [data, setData] = useState()
+  
 
 
-  const ReceiveSalary =(salaryobj)=>{
-    setData(salaryobj);
+  const ReceiveObj = (obj) => {
+    setData(obj);
 
 
   }
@@ -80,8 +81,6 @@ function AuthProvider({ children }) {
             console.log(res.data);
           })
           .catch(error => console.log(error))
-
-
       }
       else {
         setUser(null);
@@ -116,12 +115,12 @@ function AuthProvider({ children }) {
   const ShareObj = {
     user,
     loading,
+    data,
     GoogleLogin,
     RegisterEmailorPass,
     LoginEmailorPass,
     Logout,
-    ReceiveSalary,
-    data
+    ReceiveObj,
 
 
   }

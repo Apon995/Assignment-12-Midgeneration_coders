@@ -136,7 +136,7 @@ const CheckoutForm = () => {
         <form onSubmit={handleSubmit}>
             <br />
             {error && <p className="py-3 text-red-700 font-medium text-base absolute top-[71px] ">{error} Try Again please !</p>}
-            {success && <p className="py-3 text-blue-700 font-medium text-base absolute top-[71px] ">{success} Try Again please !</p>}
+            {success && <p className="py-3 text-blue-700 font-medium text-base absolute top-[71px] ">{success}</p>}
             <div className="border-2 py-4 px-2 border-[#adadad] rounded-md">
                 <CardElement
                     options={{

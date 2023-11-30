@@ -20,9 +20,9 @@ function Banner() {
 
 
     return (
-        <div id='Banner' className={` px-[5%] gap-4 ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center pt-10 py-5 `}>
+        <div id='Banner' className={` px-[5%] gap-4 ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? 'hidden' : 'flex'} items-center md:flex-row flex-col pt-10 py-5 `}>
 
-            <div className='w-[50%] '>
+            <div className='lg:w-[50%] w-full '>
               {
                 location.pathname == '/Contact' || location.pathname == '/About' ? <div> 
                     <h1 className='text-white font-bold text-7xl text-center pb-3'>{location.pathname == '/About' ? "About us" : 'Contact us'}</h1>
@@ -42,22 +42,22 @@ function Banner() {
                 <SwiperSlide>
                     <div className='text-white '>
                         <h1 className='text-xl pb-5 text-white font-medium'>Welcome to Mid Generation coders</h1>
-                        <h2 className='text-7xl font-bold leading-[90px] text-[#ff695f]'>
+                        <h2 className='lg:text-7xl md:text-6xl text-4xl font-bold leading-normal lg:leading-[90px] text-[#ff695f]'>
                             Wanna build
                             <span className='text-[#03a4ed]'> a website</span> for your
                             <span className='text-[#2742fd]'>business</span>?
                         </h2>
                         <br />
 
-                        <p className='text-base font-medium text-white w-[500px] '>
+                        <p className='text-base font-medium text-white lg:w-[500px] '>
                             Our professionals will give you the best idea and they will help you to reach your goal.
                         </p>
                         <br />
 
-                        <div className="flex gap-4  w-fit items-center">
-                            <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] text-base'> <i className="fa fa-phone "></i> Call now</button>
+                        <div className="flex gap-4  md:w-fit items-center">
+                            <button className='bg-[#2742fd] p-4 px-6 rounded-[20px] md:text-base text-base'> <i className="fa fa-phone "></i> Call now</button>
 
-                            <h2 className='font-normal text-xl'>+88034434090</h2>
+                            <h2 className='font-normal md:text-xl text-base'>+88034434090</h2>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -65,7 +65,7 @@ function Banner() {
                 <SwiperSlide>
                     <div className='text-white '>
                         <h1 className='text-xl pb-5 text-[#03a4ed] font-bold uppercase'> Grow up your business!</h1>
-                        <h2 className='text-6xl font-bold leading-[70px] text-[#ff695f]'>
+                        <h2 className='lg:text-7xl md:text-6xl text-4xl font-bold leading-normal lg:leading-[70px] text-[#ff695f]'>
                             Grow your <span className='text-white'>Busniess by</span> <span className='text-[#2742fd]'>the help of </span> <span className='text-[#03a4ed]'>Technology !</span>
                         </h2>
                         <br />
@@ -89,22 +89,22 @@ function Banner() {
                 <SwiperSlide>
                     <div className='text-white '>
                         <h1 className='text-xl pb-5 text-[#ff695f] font-medium'>Idea !</h1>
-                        <h2 className='text-7xl font-bold leading-[90px]'>
+                        <h2 className='lg:text-7xl md:text-6xl text-4xl font-bold leading-normal lg:leading-[90px]'>
                             Get the
                             <span className='text-[#03a4ed]'> best Idea's</span> for your
                             <span className='text-[#2742fd]'> business . <span className='text-[#ff695f]'></span></span>
                         </h2>
                         <br />
 
-                        <p className='text-base font-medium  w-[550px] text-white'>
+                        <p className='text-base font-medium  lg:w-[550px] text-white'>
                             Our professionals will give you the best idea and they will help you to reach your goal.
                         </p>
                         <br />
 
-                        <div className="flex gap-4  w-fit items-center">
+                        <div className="flex gap-4  lg:w-fit items-center">
                             <button className='bg-[#03a4ed] p-4 px-6 rounded-[20px] text-base'> Our Services</button>
 
-                            <h2 className='font-normal text-xl'> <i className="fa fa-phone "></i> +88034434090</h2>
+                            <h2 className='font-normal md:text-xl text-base'> <i className="fa fa-phone "></i> +88034434090</h2>
                         </div>
                     </div>
                 </SwiperSlide>
@@ -113,7 +113,7 @@ function Banner() {
               }
 
             </div>
-            <div className='w-[50%]'>
+            <div className='lg:w-[50%] w-full'>
                 <img className='bannerimg' src={`${location.pathname == '/Contact' || location.pathname == '/About' ? contactImg : BannerImg}`} alt="" />
 
 

@@ -10,40 +10,40 @@ function App() {
   const location = useLocation();
   const [header, setHeader] = useState(false)
 
-  const handlefixedHeader = ()=>{
-    if(window.scrollY >= 600){
+  const handlefixedHeader = () => {
+    if (window.scrollY >= 600) {
       setHeader(true)
     }
-    else{
+    else {
       setHeader(false)
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     window.addEventListener("scroll", handlefixedHeader)
-  },[])
+  }, [])
 
 
   return (
     <>
 
-   
+
 
       <header className={` ${location?.pathname == '/Login' || location.pathname == '/Register' || location.pathname == '/Dashboard' ? '' : 'headerbg'}`}>
         <Navbar />
         <br />
         <br />
-        <Banner  />
+        <Banner />
       </header>
-     
-      <main>
+
+      <main className='hidden' >
         {
           navigation.state == 'idle' ? <Outlet /> : <Loading />
         }
 
       </main>
 
-      <footer>
+      <footer className='hidden' >
         <Footer />
       </footer>
 

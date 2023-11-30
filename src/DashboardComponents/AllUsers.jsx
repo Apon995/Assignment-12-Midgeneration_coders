@@ -99,6 +99,9 @@ function AllUsers() {
     }
 
 
+    console.log(data)
+
+
 
 
     return (

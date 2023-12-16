@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import useAuth from '../CustomHooks_folder/useAuth';
 import useFetch from '../CustomHooks_folder/useFetch';
 import Swal from 'sweetalert2';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { motion } from "framer-motion"
 
 function Update() {
     const [Error, setError] = useState();
@@ -82,7 +83,13 @@ function Update() {
     }
     return (
         <>
-            <div className="py-8 px-[5%]">
+        
+      <motion.div
+        initial={{ opacity: 0,  }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+      >
+            <div className="py-8 px-[5%] min-h-screen fixed lg:w-[80%] md:w-[100%] w-[100%]">
                 <h1 className="text-3xl font-medium text-[#343a40] ">Update page</h1>
                 <br />
                 {Error && <span style={{ color: 'red', fontSize: '14px', fontWeight: '500', display: "block" }}>{Error}</span>}
@@ -156,6 +163,8 @@ function Update() {
 
                 </div>
             </div>
+
+      </motion.div>
 
 
 

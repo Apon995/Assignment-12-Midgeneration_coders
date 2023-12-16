@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import useAuth from '../CustomHooks_folder/useAuth';
 import useFetch from '../CustomHooks_folder/useFetch';
-import AxiosError from '../Components_folder/AxiosError';
+
+import { motion } from "framer-motion"
 
 
 function PaymentDetails() {
@@ -14,51 +15,64 @@ function PaymentDetails() {
 
     axiosFetch.get(`/paymentInfo?email=${user?.email}`)
       .then(res => {
-        console.log(res.data)
+
+        setData(res.data);
       })
       .catch(error => console.log(error))
 
   }, [])
   return (
     <>
-      <div className='min-h-screen py-8 px-[5%]'>
-        <h1 className="text-3xl font-medium text-[#343a40] ">My Salary Details</h1>
+      <div className='min-h-screen py-8 lg:px-[5%] px-[2%] '>
+        <h1 className="lg:text-3xl text-xl font-medium text-[#343a40] ">My Salary Details</h1>
         <br />
 
-        {data?.length > 0 ? <div>
-          <table className="styled-table">
-            <thead>
-              <tr>
-                <th className="text-sm">Month</th>
+        {data?.length > 0 ?
 
-                <th className="text-sm">Year</th>
-                <th className="text-sm">salary</th>
-                <th className="text-sm">Payed Email</th>
+          <motion.div
+            initial={{ opacity: 0, }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+          >
 
-                <th className="text-sm">payment Method</th>
-                <th className="text-sm">Receive Email</th>
-                <th className="text-sm">Transition Id</th>
-              </tr>
-            </thead>
+            <div>
+              <table className="styled-table border-collapse ">
+                <thead>
+                  <tr>
+                    <th className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>Month</th>
 
-            <tbody>
+                    <th className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>Year</th>
+                    <th className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>salary</th>
+                    <th className="lg:text-sm text-xs  " style={{ fontSize: "12px" }}>Payed Email</th>
 
-              {
-                data?.map(employe => <tr key={employe?._id} >
-                  <td>{employe?.salary_month}</td>
-                  <td>{employe?.salary_year}</td>
-                  <td>{employe?.salary}</td>
-                  <td>{employe?.Pay_email}</td>
-                  <td>{employe?.Payment_method}</td>
-                  <td>{employe?.payment_recieve_email}</td>
-                  <td>{employe?.Transition_Id}</td>
-                </tr>)
-              }
+                    <th className="lg:text-sm text-xs " style={{ fontSize: "12px" }}>payment Method</th>
+                    <th className="lg:text-sm text-xs " style={{ fontSize: "12px" }}>Receive Email</th>
+                    <th className="lg:text-sm text-xs " style={{ fontSize: "12px" }}>Transition Id</th>
+                  </tr>
+                </thead>
 
-            </tbody>
-          </table>
+                <tbody>
 
-        </div> : <AxiosError />
+                  {
+                    data?.map(employe => <tr key={employe?._id} >
+                      <td className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>{employe?.salary_month}</td>
+                      <td className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>{employe?.salary_year}</td>
+                      <td className="lg:text-sm text-xs" style={{ fontSize: "12px" }}>{employe?.salary}</td>
+                      <td className="lg:text-sm text-xs " style={{ fontSize: "12px", lineBreak: "anywhere" }}>{employe?.Pay_email}</td>
+                      <td className="lg:text-sm text-xs " style={{ fontSize: "12px" }}>{employe?.Payment_method}</td>
+                      <td className="lg:text-sm text-xs " style={{ fontSize: "12px", lineBreak: "anywhere" }}>{employe?.payment_recieve_email}</td>
+                      <td className="lg:text-sm text-xs  " style={{ fontSize: "12px", lineBreak: "anywhere" }}>{employe?.Transition_Id}</td>
+                    </tr>)
+                  }
+
+                </tbody>
+              </table>
+
+            </div>
+          </motion.div>
+          : <div className='flex items-center justify-center w-full min-h-[60vh] text-center'>
+            <h1 className='text-black text-2xl font-medium'>Payment history Empty !</h1>
+          </div>
         }
 
       </div>

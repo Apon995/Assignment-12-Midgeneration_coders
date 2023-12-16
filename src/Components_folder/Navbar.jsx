@@ -8,7 +8,34 @@ function Navbar() {
   const { user, Logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
-  const [menu, setMenu] = useState(false);
+  const [menu, setMenu] = useState(true);
+
+
+
+
+  const HandleShowLinks = () => {
+    setMenu(!menu)
+
+    if (!menu) {
+
+
+      document.getElementById("NavBarLink").classList.remove("left-[-175px]")
+      document.getElementById("NavBarLink").classList.add("left-0")
+
+      document.getElementById('Buttons').classList.remove("left-[-140px]")
+      document.getElementById('Buttons').classList.add("left-[15px]")
+
+    }
+    else {
+      document.getElementById("NavBarLink").classList.remove("left-0")
+      document.getElementById("NavBarLink").classList.add("left-[-175px]")
+
+      document.getElementById('Buttons').classList.remove("left-[15px]")
+      document.getElementById('Buttons').classList.add("left-[-140px]")
+
+
+    }
+  }
 
 
 
@@ -39,29 +66,14 @@ function Navbar() {
   }, [handleChangeNav, location.pathname])
 
 
-  const HandleShowLinks = () => {
-    setMenu(!menu)
 
-    if (!menu) {
-
-
-      document.getElementById("NavBarLink").classList.remove("left-[-175px]")
-      document.getElementById("NavBarLink").classList.add("left-0")
-
-      document.getElementById('Buttons').classList.remove("left-[-140px]")
-      document.getElementById('Buttons').classList.add("left-[15px]")
-
+  useEffect(()=>{
+    if(location.pathname == '/Register'){
+      return
     }
-    else {
-      document.getElementById("NavBarLink").classList.remove("left-0")
-      document.getElementById("NavBarLink").classList.add("left-[-175px]")
-
-      document.getElementById('Buttons').classList.remove("left-[15px]")
-      document.getElementById('Buttons').classList.add("left-[-140px]")
-
-
-    }
-  }
+    HandleShowLinks();
+  },[location.pathname])
+  
 
 
 

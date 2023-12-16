@@ -37,14 +37,12 @@ body {
 }
 
 /* --footer-section-socialicons-hover-effect-design */
-#footerbg{
+#footerbg {
   background: url("../src/assets/Header-bg.png");
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-
-  
 }
 #socialIcons > div {
   border: 1px solid white;
@@ -75,7 +73,7 @@ body {
   z-index: 2;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 60px;
+  padding: 40px;
   text-align: center;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   border-radius: 45px;
@@ -275,10 +273,9 @@ body {
   font-size: 15px;
   font-weight: 400;
   color: #fff;
-  width: 20%;
   margin-right: 10px;
   text-transform: capitalize;
-  padding: 12px 20px;
+  padding: 12px 25px;
   border-radius: 23px;
   letter-spacing: 0.25px;
   border: none;
@@ -474,7 +471,7 @@ form .text h3 a:hover {
   position: relative;
 }
 
-.wrapper form .selectOption{
+.wrapper form .selectOption {
   height: 100%;
   width: 100%;
   outline: none;
@@ -484,9 +481,8 @@ form .text h3 a:hover {
   color: #333;
   border: 2px solid #c7bebe;
   border-radius: 6px;
-
 }
-.wrapper form .selectOption > select{
+.wrapper form .selectOption > select {
   width: 100%;
   outline: none;
 }
@@ -628,48 +624,43 @@ form#contact button:hover {
   box-shadow: 0px 0px 5px;
 }
 
-.member-content > h3{
+.member-content > h3 {
   padding-bottom: 6px;
   font-size: 22px;
   font-weight: 600;
-  color:#1877f2;
-
+  color: #1877f2;
 }
 
-.member-content > p{
+.member-content > p {
   padding-bottom: 10px;
   font-size: 16px;
   font-weight: 500;
-  color:#7a7a7a;
+  color: #7a7a7a;
 }
 
-.social-links > ul{
+.social-links > ul {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
 }
 
-.social-links > ul > li > a{
+.social-links > ul > li > a {
   font-weight: 600;
-  color:#707070;
+  color: #707070;
   font-size: 18px;
   transition: all 0.7s;
-
 }
 
-.social-links > ul > li > a:hover{
-  color:#2742fd;
+.social-links > ul > li > a:hover {
+  color: #2742fd;
 }
-
 
 /* ----dashboard-css-- */
 
-.dashboard ul .active{
+.dashboard ul .active {
   background-color: #4070f4;
 }
-
 
 .styled-table {
   width: 100%;
@@ -677,12 +668,9 @@ form#contact button:hover {
   margin-top: 20px;
 }
 
-
-
 .styled-table th,
 .styled-table td {
- 
-  padding: 14px ;
+  padding: 14px;
   text-align: center;
 }
 
@@ -691,22 +679,22 @@ form#contact button:hover {
   color: white;
 }
 
-
-.styled-table tbody tr > td:hover{
+.styled-table tbody tr > td:hover {
   cursor: pointer;
 }
 
-.styled-table tbody tr > td{
+.styled-table tbody tr > td {
   font-size: 16px;
   font-weight: 500;
-  color:black;
+  color: black;
 }
 
 .styled-table tbody tr:nth-child(even) {
   background-color: #f2f2f2fb;
 }
 
-.pay-btn,.delete-btn,
+.pay-btn,
+.delete-btn,
 .details-btn {
   padding: 8px 12px;
   border: none;
@@ -715,11 +703,10 @@ form#contact button:hover {
   text-decoration: none;
   color: #fff;
   transition: background-color 0.3s;
-  
 }
 
-.delete-btn{
-  color:black;
+.delete-btn {
+  color: black;
   font-size: 20px;
 }
 .pay-btn {
@@ -727,7 +714,7 @@ form#contact button:hover {
 }
 
 .details-btn {
-  background-color: #03a4ed;;
+  background-color: #03a4ed;
 }
 
 .pay-btn:hover,
@@ -738,30 +725,24 @@ form#contact button:hover {
 /* ---popup-select-design */
 .selectMonth {
   font-size: 18px;
-  margin:auto;
-  border:1px solid #d9d9d9;
+  margin: auto;
+  border: 1px solid #d9d9d9;
   padding: 12px 72px;
-  
 }
 
 .selectMonth select {
   padding: 8px 10px;
   border-radius: 5px;
   font-size: 16px;
-  border:1px solid #d9d9d9;
+  border: 1px solid #d9d9d9;
 }
 
-.selectMonth select:focus{
-  border:1px solid #d9d9d9;
+.selectMonth select:focus {
+  border: 1px solid #d9d9d9;
 }
-.selectMonth:active{
-  border:1px solid #d9d9d9;
+.selectMonth:active {
+  border: 1px solid #d9d9d9;
 }
-
-
-
-
-
 
 /* ---UpdataPage-design-- */
 
@@ -771,6 +752,7 @@ form#contact button:hover {
 
 .update-page > form > .update-form {
   display: flex;
+  flex-direction: row;
   overflow: hidden;
   gap: 10px;
 }
@@ -802,24 +784,42 @@ form#contact button:hover {
   border-color: #2742fd;
 }
 
-.btn-full{
-    width: 96%;
-    padding: 15px 0px;
-    background-color: #2742fd;
-    color:#FFF;
-    border:none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
-
-
+.btn-full {
+  width: 96%;
+  padding: 15px 0px;
+  background-color: #2742fd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.btn-full:hover{
-    cursor: pointer;
+.btn-full:hover {
+  cursor: pointer;
 }
 
-.btn-full:active{
-    background-color: inherit;
-    color:#151515;
+.btn-full:active {
+  background-color: inherit;
+  color: #151515;
+}
+
+@media screen and (max-width: 440px) {
+  .update-page > form > .update-form {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    gap: 10px;
+  }
+  .update-page > form > .update-form > div {
+    width: 100%;
+  }
+
+  .input {
+    width: 100%;
+  }
+
+  .btn-full {
+    width: 100%;
+  }
 }

@@ -22,3 +22,8 @@ There are features my MidGenertion_coders website :
 
 • five feature : This project is small and beautifull and esay to code . 
 
+Unique Feature : 
+
+
+• Hr can work and fire employee or employee can do work ,
+• admin can fire any employe or hr ,

@@ -19,8 +19,12 @@ import Chart from './DashboardComponents/Chart.jsx';
 import MyProfile from './DashboardComponents/MyProfile.jsx';
 import PaymentDetails from './DashboardComponents/PaymentDetails.jsx';
 import AllUsers from './DashboardComponents/AllUsers.jsx';
-import VerifiedEmploye from './DashboardComponents/VerifiedEmploye.jsx';
+
 import Update from './DashboardComponents/Update.jsx';
+import Mywork from './DashboardComponents/Mywork.jsx';
+import Allservice from './DashboardComponents/Allservice.jsx';
+import Addservice from './DashboardComponents/Addservice.jsx';
+import Updateservice from './DashboardComponents/Updateservice.jsx';
 
 
 const router = createBrowserRouter([
@@ -84,13 +88,26 @@ const router = createBrowserRouter([
         element: <AllUsers/>
       },
       {
-        path: '/Dashboard/VerifiedEmploye',
-        element: <VerifiedEmploye/>
+        path: '/Dashboard/Services',
+        element: <Allservice/>
       },
       {
         path: '/Dashboard/update',
         element: <Update/>
       },
+      {
+         path : '/Dashboard/Addservice',
+         element : <Addservice/>
+      },
+      {
+        path : '/Dashboard/updateService',
+        element : <Updateservice/>
+
+      },
+      {
+        path : '/Dashboard/Mywork',
+        element : <Mywork/>
+      }
     ]
   }
 ])

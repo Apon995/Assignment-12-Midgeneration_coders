@@ -169,7 +169,7 @@ function Login() {
       <br />
       <br />
       <br />
-      <div className='Login-page min-h-screen '>
+      <div className='Login-page min-h-screen md:px-0 px-[5%]'>
         <div className="wrapper">
           <h2>Login</h2>
           {Error && <span style={{ color: 'red', fontSize: '14px', fontWeight: '500', }}>{Error}</span>}

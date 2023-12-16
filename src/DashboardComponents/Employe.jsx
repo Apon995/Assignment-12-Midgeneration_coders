@@ -6,6 +6,8 @@ import AxiosError from "../Components_folder/AxiosError";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../CustomHooks_folder/useAuth";
+import { motion } from "framer-motion"
+
 
 
 
@@ -17,7 +19,7 @@ import useAuth from "../CustomHooks_folder/useAuth";
 
 function Employe() {
   const axiosFetch = useFetch();
-  const [isverified, setIsverified] = useState(false);
+  const [isverified, setIsverified] = useState("false");
   const navigate = useNavigate();
   const { ReceiveObj } = useAuth()
   const [year, setyear] = useState()
@@ -63,7 +65,7 @@ function Employe() {
     queryFn: () => axiosFetch.get(`/employes?Role=${"employee"}`).then((data) => data.data),
   });
 
-  
+
 
   const handleveified = (verified, email, currentVerifiedinfo) => {
     const obj = {
@@ -79,7 +81,7 @@ function Employe() {
         icon: "question",
         denyButtonText: `cencel`,
       }).then((result) => {
-  
+
         if (result?.isConfirmed) {
           axiosFetch
             .patch("/employes", obj)
@@ -192,7 +194,7 @@ function Employe() {
         }
 
         ReceiveObj(obj)
-        console.log(obj)
+
 
         setTimeout(() => {
           navigate("/Dashboard/pay")
@@ -227,6 +229,7 @@ function Employe() {
 
     axiosFetch.get(`/paymentInfo?email=${email}`)
       .then(res => {
+
         ReceiveObj(res?.data)
         navigate('/Dashboard/Chart')
       })
@@ -281,11 +284,18 @@ function Employe() {
     });
   };
 
-  
+
 
   return (
     <>
-      
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2 }}
+      >
+
+
       <div className="py-8 px-[5%]">
         <h1 className="text-3xl font-medium text-[#343a40] ">Our Employe's</h1>
 
@@ -365,6 +375,7 @@ function Employe() {
                         <i className="fa-solid fa-trash-can"></i>
                       </button>
                     </td>
+
                   </tr>
                 ))}
               </tbody>
@@ -372,6 +383,9 @@ function Employe() {
           )}
         </div>
       </div>
+
+      </motion.div>
+
 
 
     </>

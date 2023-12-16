@@ -208,7 +208,7 @@ function Register() {
               "user_roll": "Hr",
               "user_salary": 35000,
               "user_Bank_Ac_no": 23043343433,
-              "verified": null
+              "verified": false
 
             }
 
@@ -251,7 +251,7 @@ function Register() {
       <br />
       <br />
 
-      <div className='Register-page min-h-screen '>
+      <div className='Register-page min-h-screen md:px-0 px-[5%] '>
 
         <div className="wrapper">
           <h2>Registration</h2>
